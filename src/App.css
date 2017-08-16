@@ -1,24 +1,121 @@
-.App {
-  text-align: center;
+html,body{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+ul, li{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+body:before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-image: url("./bg.jpg");
+  background-size: cover;
+  position: absolute;
+}
+#tt-wrapper{
+  width: 380px;
+  height: 100%;
+  background: rgba(255,255,255,0.9);
+  position: absolute;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 0px 3px rgba(0,0,0,0.24);
+  box-sizing: border-box;
+  padding: 40px;
+}
+#tt-wrapper h4{
+  color: rgb(107,125,255);
+  margin: 24px 0;
+}
+#add-todays-todo{
+  position: relative;
+}
+#add-todays-todo input{
+  width: 85%;
+  background: transparent;
+  border-top: 0;
+  border-bottom: 2px solid rgb(107,125,255);
+  border-right: 0;
+  border-left: 0;
+  font-size: 16px;
+  padding: 8px 0;
+  outline: none;
+  margin-bottom: 8px;
+}
+#add-todays-todo button{
+  border: 0;
+  background: transparent;
+  color: rgb(107,125,255);
+  font-size: 24px;
+  position: absolute;
+  right: 0;
+  padding: 3px;
+}
+#tried-todo, #todays-todo{
+  font-size: 16px;
+}
+#tried-todo .tried-todo .tried-date{
+  font-size: 12px;
+  color: rgb(200,200,200);
+  position: absolute;
+  right: 0;
+  top: 0;
+  line-height: 24px;
+}
+#tried-todo .tried-todo, #todays-todo .todays-todo{
+  /*height: 36px;*/
+  position: relative;
+  height: auto;
+}
+#tried-todo .tried-todo input, #todays-todo .todays-todo input{
+  border: 1px solid rgb(107,125,255);
+  border-radius: 2px;
+  width: 18px;
+  height: 18px;
+  -webkit-appearance: none;
+  position: relative;
+  top: 0;
+  margin: auto;
+  bottom: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+#tried-todo .tried-todo label, #todays-todo .todays-todo label{
+  position: relative;
+  top: -24px;
+  padding-left: 30px;
+  display: block;
+  width: 215px;
+  line-height: 150%;
+  font-weight: 400;
+  color: rgb(90,90,90);
+}
+#tried-todo .tried-todo button, #todays-todo .todays-todo button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+#today-info .today-date{
+  font-size: 36px;
+  font-weight: 100;
+  line-height: 125%;
+  color: rgb(107,125,255);
+}
+#today-info .today-date b{
+  font-weight: 300;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.completed input{
+  background-color: rgb(107,125,255);
 }
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+#todays-todo .completed label{
+  text-decoration: line-through;
+  color: rgb(180,180,180);
 }

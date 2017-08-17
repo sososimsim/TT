@@ -1,0 +1,48 @@
+#todays-todo{
+  font-size: 16px;
+}
+#todays-todo .todays-todo{
+  position: relative;
+  height: auto;
+}
+#todays-todo .todays-todo input{
+  border: 1px solid rgb(107,125,255);
+  border-radius: 2px;
+  width: 18px;
+  height: 18px;
+  -webkit-appearance: none;
+  position: relative;
+  top: 0;
+  margin: auto;
+  bottom: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+
+#todays-todo .todays-todo label{
+  position: relative;
+  top: -24px;
+  padding-left: 30px;
+  display: block;
+  width: 215px;
+  line-height: 150%;
+  font-weight: 400;
+}
+
+#todays-todo .todays-todo button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.completed input{
+  background-color: rgb(107,125,255);
+}
+
+.completed label{
+  text-decoration: line-through;
+  color: rgb(180,180,180);
+}

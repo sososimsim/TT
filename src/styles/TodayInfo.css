@@ -1,0 +1,9 @@
+#today-info .today-date{
+  font-size: 36px;
+  font-weight: 100;
+  line-height: 125%;
+  color: rgb(107,125,255);
+}
+#today-info .today-date b{
+  font-weight: 300;
+}

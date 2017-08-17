@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../App.css';
+import '../styles/TodayInfo.css';
 
 class TodayInfo extends Component {
   render(){

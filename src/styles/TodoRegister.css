@@ -1,0 +1,24 @@
+#add-todays-todo{
+  position: relative;
+}
+#add-todays-todo input{
+  width: 85%;
+  background: transparent;
+  border-top: 0;
+  border-bottom: 2px solid rgb(107,125,255);
+  border-right: 0;
+  border-left: 0;
+  font-size: 16px;
+  padding: 8px 0;
+  outline: none;
+  margin-bottom: 8px;
+}
+#add-todays-todo button{
+  border: 0;
+  background: transparent;
+  color: rgb(107,125,255);
+  font-size: 24px;
+  position: absolute;
+  right: 0;
+  padding: 3px;
+}

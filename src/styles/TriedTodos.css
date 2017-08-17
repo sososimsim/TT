@@ -1,0 +1,45 @@
+#tried-todo{
+  font-size: 16px;
+}
+#tried-todo .tried-todo .tried-date{
+  font-size: 12px;
+  color: rgb(200,200,200);
+  position: absolute;
+  right: 0;
+  top: 0;
+  line-height: 24px;
+}
+#tried-todo .tried-todo{
+  position: relative;
+  height: auto;
+}
+#tried-todo .tried-todo input{
+  border: 1px solid rgb(107,125,255);
+  border-radius: 2px;
+  width: 18px;
+  height: 18px;
+  -webkit-appearance: none;
+  position: relative;
+  top: 0;
+  margin: auto;
+  bottom: 0;
+  z-index: 1;
+  cursor: pointer;
+}
+#tried-todo .tried-todo label{
+  position: relative;
+  top: -24px;
+  padding-left: 30px;
+  display: block;
+  width: 215px;
+  line-height: 150%;
+  font-weight: 400;
+}
+#tried-todo .tried-todo button{
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}

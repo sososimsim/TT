@@ -43,3 +43,12 @@
   background: transparent;
   cursor: pointer;
 }
+
+.completed input{
+  background-color: rgb(107,125,255);
+}
+
+.completed label{
+  text-decoration: line-through;
+  color: rgb(180,180,180);
+}

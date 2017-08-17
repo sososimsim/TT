@@ -26,6 +26,10 @@
   z-index: 1;
   cursor: pointer;
 }
+#tried-todo .tried-todo input:hover{
+  background-color: rgb(107,125,255);
+  transition: 0.2s;
+}
 #tried-todo .tried-todo label{
   position: relative;
   top: -24px;

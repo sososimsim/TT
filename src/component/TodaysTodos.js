@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/TodaysTodos.css';
+import TodaysTodo from './TodaysTodo';
 
 class TodaysTodos extends Component {
   render(){
@@ -7,21 +8,9 @@ class TodaysTodos extends Component {
       <section id="todays-todo">
         <h4>#Todays_Todo</h4>
         <ul>
-          <li className="todays-todo completed">
-            <input name="todays-todo" type="checkbox" className="toggle"/>
-            <label htmlFor="todays-todo">스토어팜 이슈 확인하기</label>
-            <button type="button" className="delete">X</button>
-          </li>
-          <li className="todays-todo">
-            <input name="todays-todo" type="checkbox" className="toggle"/>
-            <label htmlFor="todays-todo">점심 회식</label>
-            <button type="button" className="delete">X</button>
-          </li>
-          <li className="todays-todo">
-            <input name="todays-todo" type="checkbox" className="toggle"/>
-            <label htmlFor="todays-todo">리액트 스터디 과제하기</label>
-            <button type="button" className="delete">X</button>
-          </li>
+          {this.props.todaysTodos.map((todo, id)=>{
+            return <TodaysTodo todo={todo} id={id}/>
+          })}
         </ul>
       </section>
     );

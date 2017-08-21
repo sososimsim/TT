@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../styles/TodoRegister.css';
 
+const ENTER = 13;
+
 class TodoRegister extends Component {
   constructor(){
     super();
@@ -16,6 +18,16 @@ class TodoRegister extends Component {
   }
 
   onClickButton = () => {
+    this._registerTodo();
+  }
+
+  onEnter = (e) => {
+    if (e.which === ENTER){
+      this._registerTodo();
+    }
+  }
+
+  _registerTodo = () => {
     let newTodoData = {
       completed: false,
       registeredDate: new Date(),
@@ -23,18 +35,6 @@ class TodoRegister extends Component {
       content: this.state.newTodo
     };
     this.props.onRegister(newTodoData);
-  }
-
-  onEnter = (e) => {
-    if (e.which === 13){
-      let newTodoData = {
-        completed: false,
-        registeredDate: new Date(),
-        completedDate: null,
-        content: this.state.newTodo
-      };
-      this.props.onRegister(newTodoData);
-    }
   }
 
   render(){

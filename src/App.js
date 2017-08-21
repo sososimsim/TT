@@ -93,12 +93,24 @@ class App extends Component {
     });
   }
 
+  //[TODO] todo.content === target.content 부분 개선
+  //TodaysTodo에서부터 타고 타고 거슬러 올라와서, target을 전체 투두 리스트에서 찾을 방법....?
+  updateTodaysTodos = (target) => {
+    this.setState({
+      todos: this.state.todos.map((todo, id)=>{
+        return (todo.content === target.content) ? {...todo, completed: target.completed, completedDate: target.completedDate} : todo;
+      })
+    }, ()=>{
+      // console.log(this.state.todos);
+    });
+  }
+
   render() {
     return (
       <main id="tt-wrapper">
         <TodayInfo/>
         <TodoRegister onRegister={this.onRegisterTodo}/>
-        <TodaysTodos todaysTodos={this.todoFilter("today")}/>
+        <TodaysTodos todaysTodos={this.todoFilter("today")} updateTodaysTodos={this.updateTodaysTodos}/>
         <TriedTodos triedTodos={this.todoFilter("tried")}/>
       </main>
     );

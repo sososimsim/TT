@@ -35,6 +35,13 @@ class TodoRegister extends Component {
       content: this.state.newTodo
     };
     this.props.onRegister(newTodoData);
+    this._resetRegister();
+  }
+
+  _resetRegister = () => {
+    this.setState({
+      newTodo: ""
+    });
   }
 
   render(){

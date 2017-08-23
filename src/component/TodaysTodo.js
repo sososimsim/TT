@@ -7,7 +7,7 @@ class TodaysTodo extends Component {
       completed: props.todo.completed,
       completedDate: props.todo.completedDate,
       content: props.todo.content,
-      id: props.index
+      id: props.id
     }
   }
 

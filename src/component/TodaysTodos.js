@@ -6,7 +6,7 @@ class TodaysTodos extends Component {
 
   render(){
     let todaysTodoList = this.props.todaysTodos.map((todo, id)=>{
-      return <TodaysTodo todo={todo} id={id} index={id} updateTodaysTodo={this.props.updateTodaysTodo} deleteTodo={this.props.deleteTodo}/>
+      return <TodaysTodo todo={todo} key={id} id={id} updateTodaysTodo={this.props.updateTodaysTodo} deleteTodo={this.props.deleteTodo}/>
     });
 
     return(

@@ -5,61 +5,50 @@ import TodoRegister from './component/TodoRegister';
 import TodaysTodos from './component/TodaysTodos';
 import TriedTodos from './component/TriedTodos';
 
+const defaultTodos = [
+  // 오늘이 8월 10일(Aug 10 2017)인 상태,
+  { // #Todays_todo 완료된 todo
+    completed: true,
+    registeredDate: new Date(),
+    completedDate: new Date(),
+    content: "리액트 스터디 과제하기"
+  },
+  { // #Todays_todo 아직 완료하지 않은 todo
+    completed: false,
+    registeredDate: new Date(),
+    completedDate: null,
+    content: "책상 정리하기"
+  },
+  { // 화면에 보이지 않는, 과거에 완료한 todo
+    completed: true,
+    registeredDate: new Date("8/10/2017"),
+    completedDate: new Date("8/10/2017"),
+    content: "책 반납하기"
+  },
+  { // #Tried_todo에 노출되는, 오늘보다 이전에 등록되었는데(registeredDate이 오늘 이전) 아직 완료하지 않은 todo
+    completed: false,
+    registeredDate: new Date("8/10/2017"),
+    completedDate: null,
+    content: "사진 출력하기"
+  }
+];
+
 class App extends Component {
   constructor(props){
     super();
-    this.todoFilter = this.todoFilter.bind(this);
     this.onRegisterTodo = this.onRegisterTodo.bind(this);
     this.state = {
-      todos: [
-       // 오늘이 8월 10일(Aug 10 2017)인 상태,
-       { // #Todays_todo 완료된 todo
-         completed: true,
-         registeredDate: new Date(),
-         completedDate: new Date(),
-         content: "리액트 스터디 과제하기"
-       },
-       { // #Todays_todo 아직 완료하지 않은 todo
-         completed: false,
-         registeredDate: new Date(),
-         completedDate: null,
-         content: "책상 정리하기"
-       },
-       { // 화면에 보이지 않는, 과거에 완료한 todo
-         completed: true,
-         registeredDate: new Date("8/10/2017"),
-         completedDate: new Date("8/10/2017"),
-         content: "책 반납하기"
-       },
-       { // #Tried_todo에 노출되는, 오늘보다 이전에 등록되었는데(registeredDate이 오늘 이전) 아직 완료하지 않은 todo
-         completed: false,
-         registeredDate: new Date("8/10/2017"),
-         completedDate: null,
-         content: "사진 출력하기"
-       }
-     ]
+      todaysTodos: this._getTodaysTodos(defaultTodos),
+      triedTodos: this._getTriedTodos(defaultTodos)
     };
   }
 
-  todoFilter(filter){
-    switch (filter) {
-      case "today":
-        //registeredDate가 오늘인 친구들
-        return this._getTodaysTodos();
-      case "tried":
-        //registeredDate가 오늘 이전인데, completed가 false인 친구들
-        return this._getTriedTodos();
-      default:
-        return this.state.todos;
-    }
+  _getTodaysTodos(todos){
+    return todos.filter(this._isToday);
   }
 
-  _getTodaysTodos(){
-    return this.state.todos.filter(this._isToday);
-  }
-
-  _getTriedTodos(){
-    const pastTodos = this.state.todos.filter(function(todo){
+  _getTriedTodos(todos){
+    const pastTodos = todos.filter(function(todo){
       if (this._isToday(todo)) {
         return false;
       } else {
@@ -89,19 +78,17 @@ class App extends Component {
 
   onRegisterTodo(newTodo){
     this.setState({
-      todos: [...this.state.todos, newTodo]
+      todaysTodos: [...this.state.todaysTodos, newTodo]
     });
   }
 
-  //[TODO] todo.content === target.content 부분 개선
-  //TodaysTodo에서부터 타고 타고 거슬러 올라와서, target을 전체 투두 리스트에서 찾을 방법....?
-  updateTodaysTodos = (target) => {
+  updateTodaysTodo = (targetTodo) => {
     this.setState({
-      todos: this.state.todos.map((todo, id)=>{
-        return (todo.content === target.content) ? {...todo, completed: target.completed, completedDate: target.completedDate} : todo;
+      todaysTodos: this.state.todaysTodos.map((todo, id) => {
+        return (targetTodo.id === id) ? {...todo, completed: targetTodo.completed, completedDate: targetTodo.completedDate} : todo;
       })
     }, ()=>{
-      // console.log(this.state.todos);
+      console.log(this.state.todaysTodos);
     });
   }
 
@@ -110,8 +97,8 @@ class App extends Component {
       <main id="tt-wrapper">
         <TodayInfo/>
         <TodoRegister onRegister={this.onRegisterTodo}/>
-        <TodaysTodos todaysTodos={this.todoFilter("today")} updateTodaysTodos={this.updateTodaysTodos}/>
-        <TriedTodos triedTodos={this.todoFilter("tried")}/>
+        <TodaysTodos todaysTodos={this.state.todaysTodos} updateTodaysTodo={this.updateTodaysTodo}/>
+        <TriedTodos triedTodos={this.state.triedTodos}/>
       </main>
     );
   }

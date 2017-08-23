@@ -3,10 +3,10 @@ import '../styles/TodaysTodos.css';
 import TodaysTodo from './TodaysTodo';
 
 class TodaysTodos extends Component {
-  
+
   render(){
     let todaysTodoList = this.props.todaysTodos.map((todo, id)=>{
-      return <TodaysTodo todo={todo} id={id} index={id} updateTodaysTodo={this.props.updateTodaysTodo}/>
+      return <TodaysTodo todo={todo} id={id} index={id} updateTodaysTodo={this.props.updateTodaysTodo} deleteTodo={this.props.deleteTodo}/>
     });
 
     return(

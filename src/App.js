@@ -92,12 +92,20 @@ class App extends Component {
     });
   }
 
+  deleteTodaysTodo = (targetTodo) => {
+    this.setState({
+      todaysTodo: this.state.todaysTodos.splice(targetTodo.id, 1)
+    }, ()=>{
+      console.log(this.state.todaysTodos);
+    });
+  }
+
   render() {
     return (
       <main id="tt-wrapper">
         <TodayInfo/>
         <TodoRegister onRegister={this.onRegisterTodo}/>
-        <TodaysTodos todaysTodos={this.state.todaysTodos} updateTodaysTodo={this.updateTodaysTodo}/>
+        <TodaysTodos todaysTodos={this.state.todaysTodos} updateTodaysTodo={this.updateTodaysTodo} deleteTodo={this.deleteTodaysTodo}/>
         <TriedTodos triedTodos={this.state.triedTodos}/>
       </main>
     );

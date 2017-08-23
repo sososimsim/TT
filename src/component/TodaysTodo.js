@@ -23,12 +23,16 @@ class TodaysTodo extends Component {
     });
   }
 
+  deleteTodo = () => {
+    this.props.deleteTodo(this.state);
+  }
+
   render(){
     return(
       <li className={"todays-todo" + (this.state.completed ? " completed" : "")}>
         <input name="todays-todo" type="checkbox" className="toggle" onClick={this.toggleCompleteState}/>
         <label htmlFor="todays-todo">{this.props.todo.content}</label>
-        <button type="button" className="delete">X</button>
+        <button type="button" className="delete" onClick={this.deleteTodo}>X</button>
       </li>
     );
   };

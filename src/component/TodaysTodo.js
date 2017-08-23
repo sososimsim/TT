@@ -7,7 +7,7 @@ class TodaysTodo extends Component {
       completed: props.todo.completed,
       completedDate: props.todo.completedDate,
       content: props.todo.content,
-      index: props.id
+      id: props.id
     }
   }
 
@@ -24,7 +24,7 @@ class TodaysTodo extends Component {
     this.setState({
       completedDate: completedDate
     }, ()=>{
-      this.props.onToggleCompleteState(this.state)
+      this.props.updateTodaysTodo(this.state)
     });
   }
 

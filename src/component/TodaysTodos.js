@@ -4,18 +4,16 @@ import TodaysTodo from './TodaysTodo';
 
 class TodaysTodos extends Component {
   
-  onToggleCompleteState = (target) => {
-    this.props.updateTodaysTodos(target);
-  }
-
   render(){
+    let todaysTodoList = this.props.todaysTodos.map((todo, id)=>{
+      return <TodaysTodo todo={todo} id={id} index={id} updateTodaysTodo={this.props.updateTodaysTodo}/>
+    });
+
     return(
       <section id="todays-todo">
         <h4>#Todays_Todo</h4>
         <ul>
-          {this.props.todaysTodos.map((todo, id)=>{
-            return <TodaysTodo todo={todo} id={id} index={id} onToggleCompleteState={this.onToggleCompleteState}/>
-          })}
+          {todaysTodoList}
         </ul>
       </section>
     );

@@ -7,23 +7,18 @@ class TodaysTodo extends Component {
       completed: props.todo.completed,
       completedDate: props.todo.completedDate,
       content: props.todo.content,
-      id: props.id
+      id: props.index
     }
   }
 
   toggleCompleteState = () => {
-    this.setState({
-      completed: !this.state.completed
-    }, ()=> {
-      let completedDate = this.state.completed ? new Date() : null;
-      this._setCompletedDate(completedDate);
-    });
-  }
+    let tobeCompleteState = !this.state.completed;
+    let completedDate = tobeCompleteState ? new Date() : null;
 
-  _setCompletedDate = (completedDate) => {
     this.setState({
+      completed: tobeCompleteState,
       completedDate: completedDate
-    }, ()=>{
+    }, ()=> {
       this.props.updateTodaysTodo(this.state)
     });
   }

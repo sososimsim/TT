@@ -100,13 +100,23 @@ class App extends Component {
     });
   }
 
+  updateTriedTodo = (targetTodo) => {
+    this.setState({
+      triedTodos: this.state.triedTodos.map((todo, id) => {
+        return (targetTodo.id === id) ? {...todo, completed: targetTodo.completed, completedDate: targetTodo.completedDate} : todo;
+      })
+    }, ()=>{
+      console.log(this.state.triedTodos);
+    });
+  }
+
   render() {
     return (
       <main id="tt-wrapper">
         <TodayInfo/>
         <TodoRegister onRegister={this.onRegisterTodo}/>
         <TodaysTodos todaysTodos={this.state.todaysTodos} updateTodaysTodo={this.updateTodaysTodo} deleteTodo={this.deleteTodaysTodo}/>
-        <TriedTodos triedTodos={this.state.triedTodos}/>
+        <TriedTodos triedTodos={this.state.triedTodos} updateTriedTodo={this.updateTriedTodo}/>
       </main>
     );
   }

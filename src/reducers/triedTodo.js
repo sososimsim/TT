@@ -1,4 +1,4 @@
-import * as actions from '../actions/ActionTypes';
+import * as actions from '../actions/actionTypes';
 
 const defaultTriedTodos = [
   { // 화면에 보이지 않는, 과거에 완료한 todo

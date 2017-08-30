@@ -3,11 +3,11 @@
 import { combineReducers } from 'redux';
 
 //합칠 reducer들을 불러옵니다.
-import todaysTodo from './todaysTodo';
-import triedTodo from './triedTodo';
+import todaysTodos from './todaysTodos';
+import triedTodos from './triedTodos';
 
 const reducers = combineReducers({
-  todaysTodo, triedTodo
+  todaysTodos, triedTodos
 });
 
 export default reducers;

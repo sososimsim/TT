@@ -115,7 +115,7 @@ class App extends Component {
       <main id="tt-wrapper">
         <TodayInfo/>
         <TodoRegister onRegister={this.onRegisterTodo}/>
-        <TodaysTodos todaysTodos={this.state.todaysTodos} updateTodaysTodo={this.updateTodaysTodo} deleteTodo={this.deleteTodaysTodo}/>
+        <TodaysTodos updateTodaysTodo={this.updateTodaysTodo} deleteTodo={this.deleteTodaysTodo}/>
         <TriedTodos triedTodos={this.state.triedTodos} updateTriedTodo={this.updateTriedTodo}/>
       </main>
     );

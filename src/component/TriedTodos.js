@@ -9,43 +9,30 @@ class TriedTodos extends Component {
     super();
   }
 
-  _getTriedTodos(todos){
-    const pastTodos = todos.filter(function(todo){
-      if (this._isToday(todo)) {
-        return false;
-      } else {
-        return true;
-      }
-    }.bind(this));
-    return pastTodos.filter(this._isNotCompleted);
-  }
-
-  _isNotCompleted(todo){
-    return todo.completed === false;
-  }
-
-  _isToday(todo){
+  _isNotCompletedToday(todo){
     const now = new Date();
     const year = now.getFullYear();
     const month = now.getMonth() + 1;
     const day = now.getDate();
 
-    const registeredDate = todo.registeredDate;
-    const registeredYear = registeredDate.getFullYear();
-    const registeredMonth = registeredDate.getMonth() + 1;
-    const registeredDay = registeredDate.getDate();
+    const completedDate = todo.completedDate;
+    const completedYear = completedDate.getFullYear();
+    const completedMonth = completedDate.getMonth() + 1;
+    const completedDay = completedDate.getDate();
+    const isNotToday = (year !== completedYear) || (month !== completedMonth) || (day !== completedDay);
 
-    return (year === registeredYear) && (month === registeredMonth) && (day === registeredDay);
-  }
+    return isNotToday;
+  };
 
   render(){
-    let triedTodos = this._getTriedTodos(this.props.triedTodos);
     return (
       <section id="tried-todo">
         <h4>#Tried_Todo</h4>
         <ul>
-          {triedTodos.map((todo, id) => {
-            return <TriedTodo todo={todo} key={id} id={id} updateTriedTodo={this.props.updateTriedTodo}/>
+          {this.props.triedTodos.map((todo, id) => {
+            //오늘 이전에, 이미 완료된 건 렌더 X
+            return (todo.completed && this._isNotCompletedToday(todo)) ?
+              "" : <TriedTodo todo={todo} key={id} id={id} updateTriedTodo={this.props.updateTriedTodo}/>;
           })}
         </ul>
       </section>

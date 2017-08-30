@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/TodaysTodos.css';
 import TodaysTodo from './TodaysTodo';
 import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class TodaysTodos extends Component {
 
@@ -27,4 +28,11 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(TodaysTodos);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateTodaysTodo: (todo) => { dispatch(actions.toggleTodaysTodo(todo)) },
+    deleteTodo: (todo) => { dispatch(actions.deleteTodaysTodo(todo)) }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodaysTodos);

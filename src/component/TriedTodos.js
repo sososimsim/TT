@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/TriedTodos.css';
 import TriedTodo from './TriedTodo';
 import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class TriedTodos extends Component {
   constructor(props){
@@ -58,4 +59,10 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(TriedTodos);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateTriedTodo: (todo) => { dispatch(actions.toggleTriedTodo(todo)) },
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(TriedTodos);

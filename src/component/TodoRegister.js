@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../styles/TodoRegister.css';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 const ENTER = 13;
 
@@ -55,4 +57,10 @@ class TodoRegister extends Component {
   }
 }
 
-export default TodoRegister;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onRegister: (todo) => { dispatch(actions.addTodaysTodo(todo)) },
+  }
+}
+
+export default connect(null, mapDispatchToProps)(TodoRegister);

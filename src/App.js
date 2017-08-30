@@ -51,7 +51,7 @@ class App extends Component {
       <main id="tt-wrapper">
         <TodayInfo/>
         <TodoRegister onRegister={this.onRegisterTodo}/>
-        <TodaysTodos updateTodaysTodo={this.updateTodaysTodo} deleteTodo={this.deleteTodaysTodo}/>
+        <TodaysTodos/>
         <TriedTodos updateTriedTodo={this.updateTriedTodo}/>
       </main>
     );

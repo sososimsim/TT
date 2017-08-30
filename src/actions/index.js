@@ -14,12 +14,12 @@ export function addTodaysTodo(todo){
 export function toggleTodaysTodo(todo){
   if (todo.completed) {
     return {
-      type: actions.RESET_TO_NOT_COMPLETED_TODAYS_TODO,
+      type: actions.COMPLETE_TODAYS_TODO,
       todo: todo
     }
   } else {
     return {
-      type: actions.COMPLETE_TODAYS_TODO,
+      type: actions.RESET_TO_NOT_COMPLETED_TODAYS_TODO,
       todo: todo
     }
   }

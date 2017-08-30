@@ -17,9 +17,33 @@ const defaultTodaysTodos = [
 ];
 
 export default function todaysTodos(todos = defaultTodaysTodos, action) {
+  let targetTodo = action.todo;
+
   switch (action.type) {
     case actions.ADD_TODAYS_TODO:
+      return [ ...todos, targetTodo ];
+
+    case actions.COMPLETE_TODAYS_TODO:
+      return todos.map((todo, id) => {
+        return (targetTodo.id === id) ? {
+          ...todo,
+          completed: true,
+          completedDate: targetTodo.completedDate
+        } : todo;
+      });
+
+    case actions.RESET_TO_NOT_COMPLETED_TODAYS_TODO:
+      return todos.map((todo, id) => {
+        return (targetTodo.id === id) ? {
+          ...todo,
+          completed: false,
+          completedDate: null
+        } : todo;
+      });
+
+    case actions.DELETE_TODAYS_TODO:
       return todos;
+      
     default:
       return todos;
   }

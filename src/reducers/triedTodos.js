@@ -15,13 +15,28 @@ const defaultTriedTodos = [
   }
 ];
 
-//TODO 실제 동작 구현하기
 export default function triedTodos(todos = defaultTriedTodos, action){
+  let targetTodo = action.todo;
+
   switch (action.type) {
     case actions.COMPLETE_TRIED_TODO:
-      return todos;
+      return todos.map((todo, id) => {
+        return (targetTodo.id === id) ? {
+          ...todo,
+          completed: true,
+          completedDate: targetTodo.completedDate
+        } : todo;
+      });
+
     case actions.RESET_TO_NOT_COMPLETED_TRIED_TODO:
-      return todos;
+      return todos.map((todo, id) => {
+        return (targetTodo.id === id) ? {
+          ...todo,
+          completed: false,
+          completedDate: null
+        } : todo;
+      });
+
     default:
       return todos;
   }

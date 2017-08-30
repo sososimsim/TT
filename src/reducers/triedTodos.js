@@ -16,7 +16,7 @@ const defaultTriedTodos = [
 ];
 
 //TODO 실제 동작 구현하기
-export default function triedTodo(todos = defaultTriedTodos, action){
+export default function triedTodos(todos = defaultTriedTodos, action){
   switch (action.type) {
     case actions.COMPLETE_TRIED_TODO:
       return todos;

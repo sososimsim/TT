@@ -16,7 +16,7 @@ const defaultTodaysTodos = [
   }
 ];
 
-export default function todaysTodo(todos = defaultTodaysTodos, action) {
+export default function todaysTodos(todos = defaultTodaysTodos, action) {
   switch (action.type) {
     case actions.ADD_TODAYS_TODO:
       return todos;

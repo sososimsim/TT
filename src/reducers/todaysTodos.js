@@ -42,8 +42,8 @@ export default function todaysTodos(todos = defaultTodaysTodos, action) {
       });
 
     case actions.DELETE_TODAYS_TODO:
-      return todos;
-      
+      return [...todos.slice(0, targetTodo.id), ...todos.slice(targetTodo.id + 1)];
+
     default:
       return todos;
   }

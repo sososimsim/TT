@@ -30,6 +30,9 @@
   background-color: rgb(107,125,255);
   transition: 0.2s;
 }
+#tried-todo .tried-todo input:focus{
+  outline: none;
+}
 #tried-todo .tried-todo label{
   position: relative;
   top: -24px;
